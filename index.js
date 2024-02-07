@@ -25,7 +25,7 @@ client.connect((err) => {
 
 app.get("/", (req, res) => {
     console.log("Response ok.");
-    res.send("Rotas: \n " + "/usuarios -> para listar os usuários. \n" + "/cardapio/id -> para listar um café pelo código do id \n");
+    res.send("Rotas: \n " + "/clientes -> para listar os usuários. \n" + "/clientes/id -> para listar um cliente pelo código do id \n");
 });
 
 
