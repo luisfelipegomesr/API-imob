@@ -121,10 +121,10 @@ app.put("/clientes/:id", (req, res) => {
     try {
         console.log("Alguém enviou um update com dados", req.body);
         const id = req.params.id;
-        const { usuario, email, senha, cpf, rg, estadocivil, nascimento, endereco } = req.body;
+        const { nome, email, telefone, cpf, rg, estadocivil, nascimento, endereco } = req.body;
         client.query(
-            "UPDATE clientes SET nome=$1, email=$2, senha=$3, cpf=$4, rg=$5, estadocivil=$6, nascimento=$7, endereco=$8 WHERE id =$9 ",
-            [usuario, email, senha, id, cpf, rg, estadocivil, nascimento, endereco],
+            "UPDATE clientes SET nome=$1, email=$2, telefone=$3, cpf=$4, rg=$5, estadocivil=$6, nascimento=$7, endereco=$8 WHERE id =$9 ",
+            [nome, email, telefone, id, cpf, rg, estadocivil, nascimento, endereco],
             function (err, result) {
                 if (err) {
                     return console.error("Erro ao executar a qry de UPDATE", err);
