@@ -98,10 +98,10 @@ app.delete("/clientes/:id", (req, res) => {
 app.post("/clientes", (req, res) => {
     try {
         console.log("Alguém enviou um post com os dados:", req.body);
-        const { nome, email, telefone } = req.body;
+        const { nome, email, telefone, cpf, rg, estadocivil, nascimento, endereco} = req.body;
         client.query(
-            "INSERT INTO clientes (nome, email, telefone) VALUES ($1, $2, $3) RETURNING * ",
-            [nome, email, telefone],
+            "INSERT INTO clientes (nome, email, telefone, cpf, rg, estadocivil, nascimento, endereco) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING * ",
+            [nome, email, telefone, cpf, rg, estadocivil, nascimento, endereco],
             function (err, result) {
                 if (err) {
                     return console.error("Erro ao executar a qry de INSERT", err);
@@ -121,10 +121,10 @@ app.put("/clientes/:id", (req, res) => {
     try {
         console.log("Alguém enviou um update com dados", req.body);
         const id = req.params.id;
-        const { usuario, email, senha } = req.body;
+        const { usuario, email, senha, cpf, rg, estadocivil, nascimento, endereco } = req.body;
         client.query(
-            "UPDATE clientes SET nome=$1, email=$2, senha=$3 WHERE id =$4 ",
-            [usuario, email, senha, id],
+            "UPDATE clientes SET nome=$1, email=$2, senha=$3, cpf=$4, rg=$5, estadocivil=$6, nascimento=$7, endereco=$8 WHERE id =$9 ",
+            [usuario, email, senha, id, cpf, rg, estadocivil, nascimento, endereco],
             function (err, result) {
                 if (err) {
                     return console.error("Erro ao executar a qry de UPDATE", err);
